@@ -49,5 +49,13 @@ namespace UdemyCourse.Controllers
                 sortBy = "name";
             return Content(string.Format("pageIndex={0} sortBy={1}", pageIndex, sortBy));
         }
+        public ActionResult ByReleaseDate(int year, int month)
+        {
+            /*
+             * bad because missing parameters url :https://localhost:44339/movies/released
+             * good url https://localhost:44339/movie/released/2015/02
+             */
+            return Content(year + "/" + month);
+        }
     }
 }
