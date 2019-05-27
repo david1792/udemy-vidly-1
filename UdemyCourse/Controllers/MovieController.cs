@@ -26,5 +26,28 @@ namespace UdemyCourse.Controllers
              * redirectToAction return a redirection to specific controller, third argument is a get parameter response
              */
         }
+
+        public ActionResult Edit(int id)
+        {
+            /*
+             *if we open the route config, we see the default route,
+             * url: "{controller}/{action}/{id}", the default route spected a parameter call id
+             * if we change the name of this method, mvs response with an error e.g.
+             *ActionResult Edit(int movieId)
+             */
+            //to test embebled parameter: https://localhost:44339/Movie/edit/1
+            //to test query string parameter: https://localhost:44339/Movie/edit?id=1
+            return Content("id=" + id);
+        }
+
+        public ActionResult Index(int? pageIndex, string sortBy)
+        {
+            //to test: https://localhost:44339/Movie?pageIndex=2&sortBy=release
+            if (!pageIndex.HasValue)
+                pageIndex = 0;
+            if (string.IsNullOrEmpty(sortBy))
+                sortBy = "name";
+            return Content(string.Format("pageIndex={0} sortBy={1}", pageIndex, sortBy));
+        }
     }
 }
