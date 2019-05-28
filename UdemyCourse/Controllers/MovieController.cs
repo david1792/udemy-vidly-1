@@ -49,6 +49,8 @@ namespace UdemyCourse.Controllers
                 sortBy = "name";
             return Content(string.Format("pageIndex={0} sortBy={1}", pageIndex, sortBy));
         }
+        //atribute route, more powerful and we can specify constrains
+        [Route("movie/released/{year:regex(\\d{4})}/{month:range(1, 12)}")]
         public ActionResult ByReleaseDate(int year, int month)
         {
             /*
